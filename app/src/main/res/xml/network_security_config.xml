@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <base-config cleartextTrafficPermitted="true">
+        <!-- Trust system & user‑added certs -->
+        <trust-anchors>
+            <certificates src="system" />
+            <certificates src="user" />
+        </trust-anchors>
+    </base-config>
+
+    <!-- If the site uses a self‑signed cert, list the domain
+         and allow user certs (NOT for production) -->
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">your-image-host.com</domain>
+        <trust-anchors>
+            <certificates src="user" />  <!-- allows user‑installed CA -->
+            <certificates src="system" />
+        </trust-anchors>
+    </domain-config>
+</network-security-config>

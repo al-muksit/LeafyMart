@@ -1,73 +1,38 @@
 package com.leafymart.Model;
 
-
-/// Generate String
 public class PlantModel {
-    private String plantName;
-    private String plantValue;
-    private String plantRating;
-    private String plantPeopleRates;
-    private String plantSold;
-    private int plantImage;
+    private String name;
+    private double price;
+    private double rating;
+    private int sold;
+    private String image_url;
 
-    /// Calling Constructor
-    public PlantModel(String plantName, String plantValue, String plantRating, String plantPeopleRates, String plantSold, int plantImage) {
-        this.plantName = plantName;
-        this.plantValue = plantValue;
-        this.plantRating = plantRating;
-        this.plantPeopleRates = plantPeopleRates;
-        this.plantSold = plantSold;
-        this.plantImage = plantImage;
+
+    public PlantModel(int id, String name, double price, double rating, int sold, String image_url) {
+        this.name = name;
+        this.price = price;
+        this.rating = rating;
+        this.sold = sold;
+        this.image_url = image_url;
     }
 
-
-    /// Creating Setter and Getter
-
-    public String getPlantName() {
-        return plantName;
+    public String getName() {
+        return name;
     }
 
-    public void setPlantName(String plantName) {
-        this.plantName = plantName;
+    public double getPrice() {
+        return price;
     }
 
-    public String getPlantValue() {
-        return plantValue;
+    public double getRating() {
+        return rating;
     }
 
-    public void setPlantValue(String plantValue) {
-        this.plantValue = plantValue;
+    public int getSold() {
+        return sold;
     }
 
-    public String getPlantRating() {
-        return plantRating;
-    }
-
-    public void setPlantRating(String plantRating) {
-        this.plantRating = plantRating;
-    }
-
-    public String getPlantPeopleRates() {
-        return plantPeopleRates;
-    }
-
-    public void setPlantPeopleRates(String plantPeopleRates) {
-        this.plantPeopleRates = plantPeopleRates;
-    }
-
-    public String getPlantSold() {
-        return plantSold;
-    }
-
-    public void setPlantSold(String plantSold) {
-        this.plantSold = plantSold;
-    }
-
-    public int getPlantImage() {
-        return plantImage;
-    }
-
-    public void setPlantImage(int plantImage) {
-        this.plantImage = plantImage;
+    public String getImageUrl() {
+        return image_url;
     }
 }
