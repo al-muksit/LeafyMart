@@ -4,5 +4,10 @@
     <string name="appbar_scrolling_view_behavior" translatable="false">com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior</string>
     <string name="view_all">View All</string>
     <string name="trending_plants">Trending Plants</string>
-
+    <string name="my_profile">My Profile</string>
+    <string name="full_name">Full Name</string>
+    <string name="gmail">Gmail</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="address">Address</string>
+    <string name="logout">Logout</string>
 </resources>
