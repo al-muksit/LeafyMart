@@ -28,6 +28,6 @@
         app:labelVisibilityMode="labeled"
         app:itemIconSize="30dp"
         app:itemActiveIndicatorStyle="@style/BottomNavigationView.ActiveIndicator"
-        app:menu="@menu/bottom_menu"></com.google.android.material.bottomnavigation.BottomNavigationView>
+        app:menu="@menu/bottom_menu" />
 
 </RelativeLayout>
