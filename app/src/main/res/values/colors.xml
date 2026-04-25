@@ -51,6 +51,8 @@
     <color name="navy_blue">#274472</color>
     <color name="red_orange">#5C0601</color>
     <color name="dark_green">#1A4314</color>
+    <color name="olive_dark">#556B2F</color>
+    <color name="olive_light">#B1D8B7</color>
 
     <color name="light_orange">#A82810</color>
     <color name="light_blue">#C0DCEC</color>
