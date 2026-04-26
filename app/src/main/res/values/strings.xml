@@ -10,4 +10,8 @@
     <string name="phone_number">Phone Number</string>
     <string name="address">Address</string>
     <string name="logout">Logout</string>
+    <string name="save_profile">Save Profile</string>
+    <string name="view_profile_picture">View profile picture</string>
+    <string name="upload_new_photo">Upload new photo</string>
+    <string name="save_to_phone">Save to phone</string>
 </resources>
