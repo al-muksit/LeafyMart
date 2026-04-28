@@ -6,10 +6,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.button.MaterialButton;
+import com.leafymart.Database.DatabaseHelper;
 import com.leafymart.R;
 import com.leafymart.Model.PlantModel;
 
@@ -19,10 +22,12 @@ public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.PlantViewHol
 
     private Context context;
     private List<PlantModel> plants;
+    private DatabaseHelper dbHelper;
 
     public PlantAdapter(Context context, List<PlantModel> plants) {
         this.context = context;
         this.plants = plants;
+        this.dbHelper = new DatabaseHelper(context);
     }
 
     @NonNull
@@ -40,8 +45,34 @@ public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.PlantViewHol
         holder.trending_plants_name.setText(plant.getPlantName());
         holder.trending_plants_value.setText(plant.getPlantValue());
         holder.trending_plants_rating.setText(plant.getPlantRating());
-        holder.trending_plants_people_rates.setText(plant.getPlantPeopleRates());
-        holder.trending_plants_sold.setText(plant.getPlantSold());
+
+        // Update Favorite Icon State
+        if (dbHelper.isFavorite(plant.getPlantName())) {
+            holder.btnFavorite.setImageResource(R.drawable.baseline_favorite_24);
+        } else {
+            holder.btnFavorite.setImageResource(R.drawable.baseline_favorite_border_24);
+        }
+
+        holder.btnFavorite.setOnClickListener(v -> {
+            if (dbHelper.isFavorite(plant.getPlantName())) {
+                dbHelper.removeFavorite(plant.getPlantName());
+                holder.btnFavorite.setImageResource(R.drawable.baseline_favorite_border_24);
+                Toast.makeText(context, "Removed from Favorites", Toast.LENGTH_SHORT).show();
+            } else {
+                dbHelper.addFavorite(plant.getPlantName(), plant.getPlantValue(), plant.getPlantImage(), plant.getPlantRating());
+                holder.btnFavorite.setImageResource(R.drawable.baseline_favorite_24);
+                Toast.makeText(context, "Added to Favorites", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        holder.btnAddToCart.setOnClickListener(v -> {
+            boolean success = dbHelper.addToCart(plant.getPlantName(), plant.getPlantValue(), plant.getPlantImage(), 1);
+            if (success) {
+                Toast.makeText(context, "Added to Cart", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(context, "Failed to add to Cart", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override
@@ -50,12 +81,11 @@ public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.PlantViewHol
     }
 
     public class PlantViewHolder extends RecyclerView.ViewHolder {
-        ImageView trending_plants_IV;
+        ImageView trending_plants_IV, btnFavorite;
         TextView trending_plants_name;
         TextView trending_plants_value;
         TextView trending_plants_rating;
-        TextView trending_plants_people_rates;
-        TextView trending_plants_sold;
+        MaterialButton btnAddToCart;
 
         public PlantViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -63,8 +93,8 @@ public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.PlantViewHol
             trending_plants_name = itemView.findViewById(R.id.trending_plants_name);
             trending_plants_value = itemView.findViewById(R.id.trending_plants_value);
             trending_plants_rating = itemView.findViewById(R.id.trending_plants_rating);
-            trending_plants_people_rates = itemView.findViewById(R.id.trending_plants_people_rates);
-            trending_plants_sold = itemView.findViewById(R.id.trending_plants_sold);
+            btnFavorite = itemView.findViewById(R.id.btn_favorite);
+            btnAddToCart = itemView.findViewById(R.id.btn_add_to_cart);
         }
     }
 }
