@@ -14,4 +14,10 @@
     <string name="view_profile_picture">View profile picture</string>
     <string name="upload_new_photo">Upload new photo</string>
     <string name="save_to_phone">Save to phone</string>
+    <string name="my_favorites">My Favorites</string>
+    <string name="my_cart">My Cart</string>
+    <string name="add_to_cart">Add to Cart</string>
+    <string name="total_amount">Total Amount:</string>
+    <string name="checkout">Checkout</string>
+    <string name="price_format">৳%d</string>
 </resources>
